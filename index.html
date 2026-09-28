@@ -1,110 +1,169 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projeto Colaborativo</title>
-  <style>
-    /* ===== SLOT CSS F2: modo escuro ===== */
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Projeto Colaborativo</title>
+    <style>
+        /* ===== SLOT CSS F2: modo escuro ===== */
 
-    body { font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto; padding: 16px; color: #222; background: #fff; }
-    header { text-align: center; border-bottom: 2px solid #ddd; margin-bottom: 16px; }
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 16px;
+            color: #222;
+            background: #fff;
+        }
 
-    /* ===== SLOT CSS F1: lista de tarefas ===== */
+        header {
+            text-align: center;
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 16px;
+        }
 
-    section { border: 1px solid #ccc; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
-    h2 { margin-top: 0; font-size: 1.1rem; }
-    button, input { padding: 8px; font-size: 1rem; margin: 2px; }
-    button { cursor: pointer; }
+        /* ===== SLOT CSS F1: lista de tarefas ===== */
 
-    /* ===== SLOT CSS F3: calculadora de IMC ===== */
+        #listaTarefas {
+            padding-left: 20px;
+        }
 
-    footer { text-align: center; color: #666; font-size: 0.9rem; }
+        #listaTarefas li {
+            margin: 4px 0;
+        }
 
-    /* ===== SLOT CSS F4: relógio ===== */
-  </style>
+        #listaTarefas li button {
+            margin-left: 8px;
+            padding: 2px 8px;
+            font-size: 0.85rem;
+        }
+
+        section {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 1.1rem;
+        }
+
+        button,
+        input {
+            padding: 8px;
+            font-size: 1rem;
+            margin: 2px;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        /* ===== SLOT CSS F3: calculadora de IMC ===== */
+
+        footer {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* ===== SLOT CSS F4: relógio ===== */
+    </style>
 </head>
+
 <body>
 
-  <header>
-    <h1>Projeto Colaborativo</h1>
-    <!-- ===== SLOT HTML F2: botão do modo escuro ===== -->
-  </header>
+    <header>
+        <h1>Projeto Colaborativo</h1>
+        <!-- ===== SLOT HTML F2: botão do modo escuro ===== -->
+    </header>
 
-  <main>
-    <!-- Base: contador -->
-    <section id="contador">
-      <h2>Contador</h2>
-      <button onclick="diminuir()">-</button>
-      <span id="valorContador">0</span>
-      <button onclick="aumentar()">+</button>
-      <button onclick="resetar()">Zerar</button>
-    </section>
+    <main>
+        <!-- Base: contador -->
+        <section id="contador">
+            <h2>Contador</h2>
+            <button onclick="diminuir()">-</button>
+            <span id="valorContador">0</span>
+            <button onclick="aumentar()">+</button>
+            <button onclick="resetar()">Zerar</button>
+        </section>
 
-    <!-- ===== SLOT HTML F1: lista de tarefas ===== -->
+        <!-- ===== SLOT HTML F1: lista de tarefas ===== -->
 
-    <!-- Base: saudação -->
-    <section id="saudacao">
-      <h2>Saudação</h2>
-      <input type="text" id="nome" placeholder="Seu nome">
-      <button onclick="saudar()">Saudar</button>
-      <p id="mensagem"></p>
-    </section>
+        <section id="tarefas">
+            <h2>Lista de tarefas</h2>
+            <input type="text" id="tarefaInput" placeholder="Nova tarefa">
+            <button id="btnAdicionar">Adicionar</button>
+            <ul id="listaTarefas"></ul>
+            <p id="totalTarefas">Total: 0 tarefa(s)</p>
+        </section>
 
-    <!-- ===== SLOT HTML F3: calculadora de IMC ===== -->
+        <!-- Base: saudação -->
+        <section id="saudacao">
+            <h2>Saudação</h2>
+            <input type="text" id="nome" placeholder="Seu nome">
+            <button onclick="saudar()">Saudar</button>
+            <p id="mensagem"></p>
+        </section>
 
-    <!-- Base: sobre -->
-    <section id="sobre">
-      <h2>Sobre</h2>
-      <p>Página base da atividade de trabalho colaborativo com Git e GitHub.</p>
-    </section>
+        <!-- ===== SLOT HTML F3: calculadora de IMC ===== -->
 
-    <!-- ===== SLOT HTML F4: relógio ===== -->
-  </main>
+        <!-- Base: sobre -->
+        <section id="sobre">
+            <h2>Sobre</h2>
+            <p>Página base da atividade de trabalho colaborativo com Git e GitHub.</p>
+        </section>
 
-  <footer>
-    <p id="rodape">© 2020 - Projeto Colaborativo</p>
-  </footer>
+        <!-- ===== SLOT HTML F4: relógio ===== -->
+    </main>
 
-  <script>
-    /* ===== SLOT JS F1: lista de tarefas ===== */
+    <footer>
+        <p id="rodape">© 2020 - Projeto Colaborativo</p>
+    </footer>
 
-    /* ----- Base: contador ----- */
-    let contador = 0;
+    <script>
+        /* ===== SLOT JS F1: lista de tarefas ===== */
 
-    function atualizarContador() {
-      document.getElementById("valorContador").textContent = contador;
-    }
+        /* ----- Base: contador ----- */
+        let contador = 0;
 
-    function aumentar() {
-      contador++;
-      atualizarContador();
-    }
+        function atualizarContador() {
+            document.getElementById("valorContador").textContent = contador;
+        }
 
-    function diminuir() {
-      contador++;
-      atualizarContador();
-    }
+        function aumentar() {
+            contador++;
+            atualizarContador();
+        }
 
-    function resetar() {
-      contador = 1;
-      atualizarContador();
-    }
+        function diminuir() {
+            contador++;
+            atualizarContador();
+        }
 
-    /* ===== SLOT JS F2: modo escuro ===== */
+        function resetar() {
+            contador = 1;
+            atualizarContador();
+        }
 
-    /* ----- Base: saudação ----- */
-    function saudar() {
-      const nome = document.getElementById("nome").value.trim();
-      document.getElementById("mensagem").textContent = "Olá, " + nome + "!";
-    }
+        /* ===== SLOT JS F2: modo escuro ===== */
 
-    /* ===== SLOT JS F3: calculadora de IMC ===== */
+        /* ----- Base: saudação ----- */
+        function saudar() {
+            const nome = document.getElementById("nome").value.trim();
+            document.getElementById("mensagem").textContent = "Olá, " + nome + "!";
+        }
 
-    /* ----- Base: rodapé ----- */
-    // (o ano do rodapé está escrito direto no HTML)
+        /* ===== SLOT JS F3: calculadora de IMC ===== */
 
-    /* ===== SLOT JS F4: relógio ===== */
-  </script>
+        /* ----- Base: rodapé ----- */
+        // (o ano do rodapé está escrito direto no HTML)
+
+        /* ===== SLOT JS F4: relógio ===== */
+    </script>
 </body>
+
 </html>
