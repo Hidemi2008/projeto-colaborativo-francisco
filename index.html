@@ -215,6 +215,14 @@
 
         /* ===== SLOT JS F2: modo escuro ===== */
 
+        function alternarTema() {
+            const escuro = document.body.classList.toggle("escuro");
+            document.getElementById("btnTema").textContent =
+                escuro ? "☀️ Modo claro" : "🌙 Modo escuro";
+        }
+
+        document.getElementById("btnTema").addEventListener("click", alternarTema);
+
         /* ----- Base: saudação ----- */
         function saudar() {
             const nome = document.getElementById("nome").value.trim();
