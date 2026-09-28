@@ -105,6 +105,45 @@
     <script>
         /* ===== SLOT JS F1: lista de tarefas ===== */
 
+        let tarefas = [];
+
+        function adicionarTarefa() {
+            const input = document.getElementById("tarefaInput");
+            const texto = input.value.trim();
+            if (texto === "") return;
+
+            tarefas.push(texto);
+            input.value = "";
+            renderizarTarefas();
+        }
+
+        function removerTarefa(indice) {
+            tarefas.splice(indice, 1);
+            renderizarTarefas();
+        }
+
+        function renderizarTarefas() {
+            const lista = document.getElementById("listaTarefas");
+            lista.innerHTML = "";
+
+            tarefas.forEach(function (tarefa, indice) {
+                const li = document.createElement("li");
+                li.textContent = tarefa;
+
+                const btn = document.createElement("button");
+                btn.textContent = "Remover";
+                btn.addEventListener("click", function () { removerTarefa(indice); });
+
+                li.appendChild(btn);
+                lista.appendChild(li);
+            });
+
+            document.getElementById("totalTarefas").textContent =
+                "Total: " + tarefas.length + " tarefa(s)";
+        }
+
+        document.getElementById("btnAdicionar").addEventListener("click", adicionarTarefa);
+
         /* ----- Base: contador ----- */
         let contador = 0;
 
