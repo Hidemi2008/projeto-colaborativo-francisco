@@ -25,6 +25,20 @@
 
         /* ===== SLOT CSS F1: lista de tarefas ===== */
 
+        #listaTarefas {
+            padding-left: 20px;
+        }
+
+        #listaTarefas li {
+            margin: 4px 0;
+        }
+
+        #listaTarefas li button {
+            margin-left: 8px;
+            padding: 2px 8px;
+            font-size: 0.85rem;
+        }
+
         section {
             border: 1px solid #ccc;
             border-radius: 8px;
@@ -79,6 +93,14 @@
 
         <!-- ===== SLOT HTML F1: lista de tarefas ===== -->
 
+        <section id="tarefas">
+            <h2>Lista de tarefas</h2>
+            <input type="text" id="tarefaInput" placeholder="Nova tarefa">
+            <button id="btnAdicionar">Adicionar</button>
+            <ul id="listaTarefas"></ul>
+            <p id="totalTarefas">Total: 0 tarefa(s)</p>
+        </section>
+
         <!-- Base: saudação -->
         <section id="saudacao">
             <h2>Saudação</h2>
@@ -118,7 +140,7 @@
         }
 
         function diminuir() {
-            contador--;
+            contador++;
             atualizarContador();
         }
 
