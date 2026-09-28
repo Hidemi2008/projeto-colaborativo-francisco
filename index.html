@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projeto Colaborativo</title>
+  <style>
+    /* ===== SLOT CSS F2: modo escuro ===== */
+
+    body { font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto; padding: 16px; color: #222; background: #fff; }
+    header { text-align: center; border-bottom: 2px solid #ddd; margin-bottom: 16px; }
+
+    /* ===== SLOT CSS F1: lista de tarefas ===== */
+
+    section { border: 1px solid #ccc; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+    h2 { margin-top: 0; font-size: 1.1rem; }
+    button, input { padding: 8px; font-size: 1rem; margin: 2px; }
+    button { cursor: pointer; }
+
+    /* ===== SLOT CSS F3: calculadora de IMC ===== */
+
+    footer { text-align: center; color: #666; font-size: 0.9rem; }
+
+    /* ===== SLOT CSS F4: relógio ===== */
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Projeto Colaborativo</h1>
+    <!-- ===== SLOT HTML F2: botão do modo escuro ===== -->
+  </header>
+
+  <main>
+    <!-- Base: contador -->
+    <section id="contador">
+      <h2>Contador</h2>
+      <button onclick="diminuir()">-</button>
+      <span id="valorContador">0</span>
+      <button onclick="aumentar()">+</button>
+      <button onclick="resetar()">Zerar</button>
+    </section>
+
+    <!-- ===== SLOT HTML F1: lista de tarefas ===== -->
+
+    <!-- Base: saudação -->
+    <section id="saudacao">
+      <h2>Saudação</h2>
+      <input type="text" id="nome" placeholder="Seu nome">
+      <button onclick="saudar()">Saudar</button>
+      <p id="mensagem"></p>
+    </section>
+
+    <!-- ===== SLOT HTML F3: calculadora de IMC ===== -->
+
+    <!-- Base: sobre -->
+    <section id="sobre">
+      <h2>Sobre</h2>
+      <p>Página base da atividade de trabalho colaborativo com Git e GitHub.</p>
+    </section>
+
+    <!-- ===== SLOT HTML F4: relógio ===== -->
+  </main>
+
+  <footer>
+    <p id="rodape">© 2020 - Projeto Colaborativo</p>
+  </footer>
+
+  <script>
+    /* ===== SLOT JS F1: lista de tarefas ===== */
+
+    /* ----- Base: contador ----- */
+    let contador = 0;
+
+    function atualizarContador() {
+      document.getElementById("valorContador").textContent = contador;
+    }
+
+    function aumentar() {
+      contador++;
+      atualizarContador();
+    }
+
+    function diminuir() {
+      contador++;
+      atualizarContador();
+    }
+
+    function resetar() {
+      contador = 1;
+      atualizarContador();
+    }
+
+    /* ===== SLOT JS F2: modo escuro ===== */
+
+    /* ----- Base: saudação ----- */
+    function saudar() {
+      const nome = document.getElementById("nome").value.trim();
+      document.getElementById("mensagem").textContent = "Olá, " + nome + "!";
+    }
+
+    /* ===== SLOT JS F3: calculadora de IMC ===== */
+
+    /* ----- Base: rodapé ----- */
+    // (o ano do rodapé está escrito direto no HTML)
+
+    /* ===== SLOT JS F4: relógio ===== */
+  </script>
+</body>
+</html>
